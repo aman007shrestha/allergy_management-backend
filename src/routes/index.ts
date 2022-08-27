@@ -1,5 +1,7 @@
 import { Router } from "express";
 import authRoutes from "./authRoutes";
+import { protectedRoute } from "../middlewares/authorization";
+import allergyRoutes from "./allergyRoutes";
 
 /**
  * @desc Entry Point: localhost:PORT/some_string
@@ -7,6 +9,6 @@ import authRoutes from "./authRoutes";
  */
 const router = Router();
 router.use("/auth", authRoutes);
-// router.use("/user", protectedRoute, userRoutes);
+router.use("/allergy", protectedRoute, allergyRoutes);
 
 export default router;

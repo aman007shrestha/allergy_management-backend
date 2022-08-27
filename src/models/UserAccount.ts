@@ -45,8 +45,11 @@ class UserAccount {
    * @param id: id based on which user is to be returned
    * @returns user object from database
    */
-  public static async getUserById(id: number): Promise<IReturnedUser> {
-    const user = await db(UserAccount.table).where({ id }).select().first();
+  public static async getUserById(user_id: number): Promise<IReturnedUser> {
+    const user = await db(UserAccount.table)
+      .where({ user_id })
+      .select()
+      .first();
     return user;
   }
 }
