@@ -45,7 +45,7 @@ export const login = async (user: IUserToInsert): Promise<any> => {
   const isPasswordMatch = await bcrypt.compare(password, existingUser.password);
   if (!isPasswordMatch)
     throw new CustomError(`Invalid Credential`, StatusCodes.UNAUTHORIZED);
-  const accessToken = generateToken(existingUser.id);
+  const accessToken = generateToken(existingUser.user_id);
   return {
     data: {
       accessToken,
