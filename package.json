@@ -4,9 +4,10 @@
   "description": "Backend for allery management for vueJs App",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon",
+    "start": "node dist/index.js",
+    "dev": "nodemon",
     "build": "tsc",
+    "postinstall": "tsc",
     "lint:fix": "tslint --fix -c tslint.json 'src/**/*.{ts,js}'",
     "prettify": "prettier --single-quote --print-width 120 --write 'src/**/*.ts'",
     "format:code": "run-s lint:fix prettify",
