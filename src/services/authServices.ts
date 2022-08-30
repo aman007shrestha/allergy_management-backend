@@ -17,6 +17,14 @@ export const createUser = async (
 ): Promise<ISuccess<IReturnedUser>> => {
   logger.info(`Creating user for ${user.email}`);
   const { password } = user;
+  // Throw Error if user with email alrady exist
+  const existingUser = await UserAccountModel.getUserByEmail(user.email);
+  if (existingUser) {
+    throw new CustomError(
+      `User with Email already exist`,
+      StatusCodes.BAD_REQUEST
+    );
+  }
   // Password Hashing
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
